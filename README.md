@@ -12,9 +12,9 @@ use "make clean" goal to delete them.
 sample commands to run the apps:
 #### ./whoServer -q 33333 -s 44444 -w 2 -b 200
 
-#### ./whoClient -q file -w 2 -sp 33333 -sip localhost
-
 #### ./master -w 2 -b 100 -s localhost -p 44444 -i ./bla
+
+#### ./whoClient -q file -w 2 -sp 33333 -sip localhost
 
 
 All requirements regarding the communication, networking and threading have been implemented.
