@@ -1,20 +1,20 @@
+![alt text](NKUA.jpg)
 # Distributed-System-of-a-Multithread-Server
-Angeliki Kalamari 
 
-%%%%%% COMPILATION
+## COMPILATION
 
 Compile each app independently using the provided makefile.
 In case master is closed unexpectedly and the pipes have now been freed,
 use "make clean" goal to delete them.
 
-%%%%%% RUN
+## RUN
 
 sample commands to run the apps:
-./whoServer -q 33333 -s 44444 -w 2 -b 200
+#### ./whoServer -q 33333 -s 44444 -w 2 -b 200
 
-./whoClient -q file -w 2 -sp 33333 -sip localhost
+#### ./whoClient -q file -w 2 -sp 33333 -sip localhost
 
-./master -w 2 -b 100 -s localhost -p 44444 -i ./bla
+####./master -w 2 -b 100 -s localhost -p 44444 -i ./bla
 
 
 All requirements regarding the communication, networking and threading have been implemented.
@@ -23,9 +23,9 @@ Adequate messages are printed to stdout to help understand when each app does.
 Ideally each app will be run in a separate terminal/tab. Where these messages can be seen.
 
 
-%%%%%% IMPLEMENTATION
+## IMPLEMENTATION
 
-------------------------Master-----------------------------------------------
+## *Master*
 The main process spawns N many workers.
 These workers will open a socket on a port (set with htons(0);) where they
 listen for requests from the whoServer.
@@ -42,7 +42,7 @@ the Worker responds back and tries to accept() a new conn.
 i.e: "worker's answer to"+"request_msg")
 
 
------------------------whoServer--------------------------------------------
+## *whoServer*
 The server has 2 ports it is listening for requests on. A query_port for
 requests from the whoClients and a server_port for messages from the Workers.
 For both of these, their sockets are put in a struct pollfd so that if any of
@@ -81,7 +81,7 @@ threads, as there is already a buffer implemented by the system. Calling accept(
 removes entries/connections from this buffer. Implementing a custom buffer would
 cause overheads in the communication.
 
--------------------whoClient------------------------------------------------
+## *whoClient*
 After opening the file a Thread is created for each line in the file,
 a maximum of -w NUM_THREADS can be spawned. If this num is less than the num of
 lines in the file then the rest of the lines will be ignored.
