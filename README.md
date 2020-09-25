@@ -14,7 +14,7 @@ sample commands to run the apps:
 
 #### ./whoClient -q file -w 2 -sp 33333 -sip localhost
 
-####./master -w 2 -b 100 -s localhost -p 44444 -i ./bla
+#### ./master -w 2 -b 100 -s localhost -p 44444 -i ./bla
 
 
 All requirements regarding the communication, networking and threading have been implemented.
